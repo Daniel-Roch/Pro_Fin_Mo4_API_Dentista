@@ -1,0 +1,25 @@
+{
+  "name": "projeto_final_modulo4_api_dentista",
+  "version": "1.0.0",
+  "description": "Este é projeto da Resilia, para o final do modulo 4, uma API de um consultorio de dentista.",
+  "main": "./src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daniel-Roch/Pro_Fin_Mo4_API_Dentista.git"
+  },
+  "author": "Daniel Rocha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Daniel-Roch/Pro_Fin_Mo4_API_Dentista/issues"
+  },
+  "homepage": "https://github.com/Daniel-Roch/Pro_Fin_Mo4_API_Dentista#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
