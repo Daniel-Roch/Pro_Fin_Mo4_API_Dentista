@@ -17,6 +17,7 @@ CREATE TABLE if not exists "Paciente" (
 function criarTabela(){
     db.run(TABELA_PACIENTE, (erro)=>{
         if(erro){
+            //caso a tabela não seja criada corretamente
             console.log("[ERRO] : Criação de tabela.")
         }
     })
