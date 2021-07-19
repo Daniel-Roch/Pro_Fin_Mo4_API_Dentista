@@ -7,4 +7,8 @@ module.exports = (app,db) =>{
     app.get('/paciente',(req,res)=>{
         Paciente.mostrar(db,res)
     })
+    //Enviar dados.
+    app.post('/paciente',(req,res)=>{
+        Paciente.adiciona(db, req.body, res)
+    })
 }
