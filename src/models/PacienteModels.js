@@ -1,7 +1,13 @@
 class Paciente{
     mostrar(db,res){
-        res.status(200).json({"Sucess": true})
-        console.log(db)
+        db.all('SELECT * FROM Paciente',(err,rows)=>{
+            if(err){
+                throw new Error(`[ERRO]:${err}`)
+            }else{
+                res.status(200).json(rows)
+            }
+        })
+
     }
 }
 //Exportando
