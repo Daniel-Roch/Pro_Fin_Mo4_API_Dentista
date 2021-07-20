@@ -11,7 +11,7 @@ CREATE TABLE if not exists "Paciente" (
     "EMAIL" varchar(100),
     "IDADE" tinyint not null,
     "CPF" VARCHAR(20) not null,
-    "DATA_CADASTRO" DATETIME
+    "DATA_CADASTRO" DATE
 );`;
 
 function criarTabela(){
