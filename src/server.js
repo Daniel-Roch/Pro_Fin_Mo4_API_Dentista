@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 
 //requisicao do meu banco de dados.
-const db = require('./infra/createDB')
+const db = require('./infra/db.js')
 
 //chamando o express.json() para ler aquivos que o req, e multi envios.
 app.use(express.json())

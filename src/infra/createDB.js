@@ -26,13 +26,3 @@ function criarTabela(){
 db.serialize( ()=> {
     criarTabela();
 });
-
-//Processamento de sinal - quando eu reinincio o processo ele fala, e quando eu fecho ele também fala
-process.on('SIGINT', () =>
-    db.close(() => {
-        console.log('[DB]: Closed');
-        process.exit(0);
-    })
-);
-
-module.exports = db;

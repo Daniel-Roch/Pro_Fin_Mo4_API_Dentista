@@ -1,13 +1,6 @@
 class Paciente{
-    //Parte que mostra toda a tabela.
-    mostrar(db,res){
-        db.all('SELECT * FROM Paciente',(err,rows)=>{
-            if(err){
-                throw new Error(`[ERRO]:${err}`)
-            }else{
-                res.status(200).json(rows)
-            }
-        })
+    constructor(){
+        
     }
     adiciona(db,paciente,res){
         //parte sqlite -
@@ -46,11 +39,11 @@ class Paciente{
         const existemErros = validacoes.filter( val => !val.valido)
         //Caso exista algum erro, ele retornará um array de erros.
         if(existemErros.length > 0){
-            res.json(existemErros)
+            res.status(400).json(existemErros)
         }else{
             //comando run no Data Base.
             /* db.run(sqlite,) */
-            res.send('funciona!')
+            res.status(201).send('funciona!')
         }
     }
 }
