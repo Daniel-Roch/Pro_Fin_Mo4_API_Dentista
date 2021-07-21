@@ -14,5 +14,8 @@ class PacienteDao{
             })
         })
     }
+    setPaciente(){
+        
+    }
 }
 module.exports = PacienteDao

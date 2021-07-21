@@ -4,7 +4,7 @@ class Paciente{
     }
     adiciona(db,paciente,res){
         //parte sqlite -
-        const sqlite = `INSERT INTO Paciente(nome,email,idade,cpf)
+        const sqlite = `INSERT INTO Paciente(nome,email,idade,cpf,DATA_CADASTRO)
         VALUES(?,?,?,?)`
         //pegando os devidos dados e fazer uma rapida verificação:
         const nomePaciente =  paciente.nome.length >= 4
