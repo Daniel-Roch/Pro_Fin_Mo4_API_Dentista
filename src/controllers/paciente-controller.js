@@ -14,14 +14,20 @@ module.exports = (app,db) =>{
             .catch(err => res.status(500).json({err}))
     })
     //Enviar dados.------------------------------
-    app.post('/paciente',(req,res)=>{
+    app.post('/paciente',async (req,res)=>{
+        //Pegando o corpo da requisição
         const {nome,email,idade,cpf} = req.body
         //recebendo a validação do models e já tratando caso tenha dado algum erro.
         try{
+            //criando a nova class Paciente.
             const newPaciente = new Paciente(nome,email,idade,cpf)
-            pacienteDao.setPaciente(newPaciente)
-            
+            //Se estiver tudo certo ele passa para DAO
+            await pacienteDao.setPaciente(newPaciente)
+                .then(sucess=> res.status(201).json(sucess))
+                .catch(erro => res.status(500).json({"Envio de dados" : false, erro}))
+
         }catch(erro){
+            //caso tenha vindo algum erro do moment, está parte devolverá qual erro aconteceu.
             res.status(400).json(erro.message)
         }
         /* Paciente.adiciona(db, req.body, res) */
