@@ -6,14 +6,21 @@ const PacienteDao = require('../DAO/PacienteDao')
 //Exportando a rota - e recebendo o parametro app.
 module.exports = (app,db) =>{
     const pacienteDao = new PacienteDao(db)
-    //Mostra todo o banco de dados.---------------
+    //Mostra todo o banco de dados.
     app.get('/paciente',async (req,res)=>{  
         //fazendo a devida requisição ao DAO - e colocando "await" para aguardar a reposta.
         await pacienteDao.getAllPaciente()
             .then(rows => res.status(200).json(rows))
             .catch(err => res.status(500).json({err}))
     })
-    //Enviar dados.------------------------------
+    //Mostrar somente um - pelo CPF
+    app.get('/paciente/:cpf',async (req,res)=>{
+        //fazendo a devida requisição ao DAO - e colocando "await" para aguardar a reposta.
+        await pacienteDao.getPaciente(req.params.cpf)
+            .then(row =>res.status(200).json(row))
+            .catch(erro => res.status(500).json({erro}))
+    })
+    //Enviar dados.
     app.post('/paciente',async (req,res)=>{
         //Pegando o corpo da requisição
         const {nome,email,idade,cpf} = req.body

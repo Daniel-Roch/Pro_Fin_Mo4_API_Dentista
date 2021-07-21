@@ -35,11 +35,22 @@ Comenados que utilizei na parte do terminal:
   npm install sqlite3
 ```
 
-## GET
+# Bibliotecas utilizadas no dev - forma de utilizar:
+
+Comenados que utilizei na parte do terminal:
+
+```bash
+  npm i nodemon -D
+  npm i jest -D
+  npm i supertest -D
+```
+
+## GET - All
 
 ```http
   GET localhost:3050/paciente
 ```
+
 ## POST
 
 ```http

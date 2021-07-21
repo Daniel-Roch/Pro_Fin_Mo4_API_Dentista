@@ -14,6 +14,21 @@ class PacienteDao{
             })
         })
     }
+    //Retorna somente 1 encontrado
+    getPaciente(cpf){
+        return new Promise((resolve,reject)=>{
+            //fazendo um get no banco de dados para pegar somente 1 resultado com aquele CPF
+            this.db.get(`SELECT * FROM Paciente WHERE CPF = ?`,
+            cpf,(erro,row)=>{
+                if(erro){
+                    reject(erro)
+                }else{
+                    resolve(row)
+                }
+            })
+        })
+    }
+    //Envio de dados ao Banco de dados.
     setPaciente(newPaciente){
         //Parte da promise para aguardar a reposta, e enviar caso sucess ou erro
         return new Promise((resolve,reject)=>{
