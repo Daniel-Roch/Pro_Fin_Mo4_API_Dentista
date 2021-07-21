@@ -14,7 +14,7 @@ class PacienteDao{
             })
         })
     }
-    setPaciente(){
+    setPaciente(dados){
         
     }
 }
