@@ -18,8 +18,7 @@ class PacienteDao{
     getPaciente(cpf){
         return new Promise((resolve,reject)=>{
             //fazendo um get no banco de dados para pegar somente 1 resultado com aquele CPF
-            this.db.get(`SELECT * FROM Paciente WHERE CPF = ?`,
-            cpf,(erro,row)=>{
+            this.db.get(`SELECT * FROM Paciente WHERE CPF = ?`, cpf, (erro,row)=>{
                 if(erro){
                     reject(erro)
                 }else{
@@ -40,6 +39,18 @@ class PacienteDao{
                     reject(err)
                 }else{  
                     resolve({"Envio de dados" : true})
+                }
+            })
+        })
+    }
+    //Deletando pelo cpf.
+    setDeletePaciente(cpf){
+        return new Promise((resolve, reject)=>{
+            this.db.run(`DELETE FROM Paciente WHERE cpf = ?`,cpf,(erro)=>{
+                if(erro){
+                    reject({"Delete" : false, erro})
+                }else{
+                    resolve({"Delete" : true})
                 }
             })
         })

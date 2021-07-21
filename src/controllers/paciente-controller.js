@@ -39,4 +39,12 @@ module.exports = (app,db) =>{
         }
         /* Paciente.adiciona(db, req.body, res) */
     })
+    //deletar pelo cpf
+    app.delete('/paciente/:cpf',async (req,res)=>{
+        await pacienteDao.setDeletePaciente(req.params.cpf)
+            .then(resp =>res.status(200).json(resp))
+            .catch(erro => res.status(500).json(erro))
+    })
+    //app.path - parcial
+    //app.put - completo
 }

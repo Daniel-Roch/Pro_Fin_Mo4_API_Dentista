@@ -45,13 +45,21 @@ Comenados que utilizei na parte do terminal:
   npm i supertest -D
 ```
 
-## GET - All
+## GET - All.
 
 ```http
   GET localhost:3050/paciente
 ```
 
-## POST
+## GET - Para achar pelo cpf.
+
+Retorna somente um, associando que exista somente uma pessoa com aquele cpf.
+
+```http
+  GET localhost:3050/paciente/cpf
+```
+
+## POST. - enviar dados.
 
 ```http
   POST localhost:3050/paciente
