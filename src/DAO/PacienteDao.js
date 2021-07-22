@@ -99,16 +99,15 @@ class PacienteDao{
         })
     }
     //Fazer um PUT - alterar Todo o campo.
-    /* setPutPaciente(cpf,body){
+    setPutPaciente(cpf,body){
         return new Promise((resolve,reject)=>{
-            //Saber se está correto o que foi passado.
-            const correto = body.name && body.email 
-            && body.idade && body.cpf && body.name.length >= 4
+            //Saber se está correto o que foi passado - Porém não pode alterar o cpf.
+            const correto = body.nome && body.email 
+            && body.idade && body.nome.length >= 4
             && body.email.indexOf('@') > 0 && typeof body.idade == 'number'
-            && body.cpf.length == 14
             if(correto){
                 this.db.run(`UPDATE paciente SET nome = ?, email = ?,
-                idade = ?, cpf = ? where cpf = ?`,[body.name, body.email, body.idade, body.cpf, cpf],(err)=>{
+                idade = ? where cpf = ?`,[body.nome, body.email, body.idade, cpf],(err)=>{
                     if(err){
                         reject({"Dados": body, "Atelração de dados" : false, err})
                     }else{
@@ -119,6 +118,6 @@ class PacienteDao{
                 reject(`Dados inválidos`)
             }
         })
-    } */
+    }
 }
 module.exports = PacienteDao
