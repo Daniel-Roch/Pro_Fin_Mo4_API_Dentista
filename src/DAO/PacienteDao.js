@@ -98,7 +98,7 @@ class PacienteDao{
             }
         })
     }
-    //Fazer um PUT - alterar Todo o campo.
+    //Fazer um PUT - alterar Todo o campo. - Menos cpf
     setPutPaciente(cpf,body){
         return new Promise((resolve,reject)=>{
             //Saber se está correto o que foi passado - Porém não pode alterar o cpf.

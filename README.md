@@ -73,6 +73,22 @@ Deleta todos os CPF's que existem, tendo em vista que exista somente 1 pessoa co
   DELETE localhost:3050/paciente/cpf
 ```
 
+## PATCH - Modificar somente um dado por vez.
+
+Ele altera 1 dado por vez, através do cpf que procura. também pode alterar o cpf aqui, mas segue o padrão de cpf correto.
+
+```http
+  PATCH localhost:3050/paciente/cpf
+```
+
+## PUT - Modificar todos os dados (Menos cpf).
+
+Consegue alterar todos os dados passados de uma vez, menos o CPF, através da pesquisa do CPF.
+
+```http
+  PUT localhost:3050/paciente/cpf
+```
+
 ## Autor 👋
 
 - [@Daniel-Roch](https://github.com/Daniel-Roch)
