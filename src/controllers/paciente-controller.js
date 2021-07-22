@@ -45,6 +45,17 @@ module.exports = (app,db) =>{
             .then(resp =>res.status(200).json(resp))
             .catch(erro => res.status(500).json(erro))
     })
-    //app.path - parcial
-    //app.put - completo
+    //app.patch - parcial - por CPF
+    app.patch('/paciente/:cpf',async (req,res)=>{
+        await pacienteDao.setPatchPaciente(req.params.cpf, req.body)
+            .then(sucess => res.status(200).json(sucess))
+            .catch(erro => erro == 'Envio inválido.' ? res.status(400).json(erro) : res.status(500).json(erro))
+
+    })
+/*     //app.put - completo
+    app.put('/paciente/:cpf',(req,res)=>{
+        await pacienteDao.setPutPaciente(req.params.cpf, req.body)
+            .then(sucess => res.status(200).json(sucess))
+            .catch(erro => erro == `Dados inválidos` ? res.status(400).json(erro) : res.status(500).json(erro))
+    }) */
 }

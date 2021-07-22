@@ -55,5 +55,70 @@ class PacienteDao{
             })
         })
     }
+    //Fazer um path - Alterar parcialmente.
+    //Vou aproveitar e validar aqui o nome que estará entrando para substituir.
+    setPatchPaciente(cpf,body){
+        return new Promise((resolve, reject)=>{
+            //Recebendo nome, e validando.
+            if(body.nome && body.nome.length >= 4){
+                this.db.run(`UPDATE paciente SET nome = ? where cpf = ?`,[body.nome,cpf],(err)=>{
+                    if(err){
+                        reject(err)
+                    }else{
+                        resolve({"Dado alterado" : "nome"})
+                    }
+                })
+            }else if(body.email && body.email.indexOf('@') > 0){
+                this.db.run(`UPDATE paciente SET email = ? where cpf = ?`,[body.email,cpf],(err)=>{
+                    if(err){
+                        reject(err)
+                    }else{
+                        resolve({"Dado alterado" : "email"})
+                    }
+                })
+            }else if(body.idade && typeof body.idade == 'number'){
+                this.db.run(`UPDATE paciente SET idade = ? where cpf = ?`,[body.idade,cpf],(err)=>{
+                    if(err){
+                        reject(err)
+                    }else{
+                        resolve({"Dado alterado" : "idade"})
+                    }
+                })
+            }else if(body.cpf && typeof body.cpf.length == 14){
+                //Avaliar se deve ou não mudar o cpf, sendo ele único para não haver problema
+                this.db.run(`UPDATE paciente SET cpf = ? where cpf = ?`,[body.cpf,cpf],(err)=>{
+                    if(err){
+                        reject(err)
+                    }else{
+                        resolve({"Dado alterado" : "cpf"})
+                    }
+                })
+            }else{
+                reject(`Envio inválido.`)
+            }
+        })
+    }
+    //Fazer um PUT - alterar Todo o campo.
+    /* setPutPaciente(cpf,body){
+        return new Promise((resolve,reject)=>{
+            //Saber se está correto o que foi passado.
+            const correto = body.name && body.email 
+            && body.idade && body.cpf && body.name.length >= 4
+            && body.email.indexOf('@') > 0 && typeof body.idade == 'number'
+            && body.cpf.length == 14
+            if(correto){
+                this.db.run(`UPDATE paciente SET nome = ?, email = ?,
+                idade = ?, cpf = ? where cpf = ?`,[body.name, body.email, body.idade, body.cpf, cpf],(err)=>{
+                    if(err){
+                        reject({"Dados": body, "Atelração de dados" : false, err})
+                    }else{
+                        resolve({"Dados": body, "Atelração de dados" : true})
+                    }
+                })
+            }else{
+                reject(`Dados inválidos`)
+            }
+        })
+    } */
 }
 module.exports = PacienteDao

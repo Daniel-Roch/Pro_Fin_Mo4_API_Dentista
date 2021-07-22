@@ -59,10 +59,18 @@ Retorna somente um, associando que exista somente uma pessoa com aquele cpf.
   GET localhost:3050/paciente/cpf
 ```
 
-## POST. - enviar dados.
+## POST - enviar dados.
 
 ```http
   POST localhost:3050/paciente
+```
+
+## DELETE - Deletar dados pelo CPF.
+
+Deleta todos os CPF's que existem, tendo em vista que exista somente 1 pessoa com aquele CPF.
+
+```http
+  DELETE localhost:3050/paciente/cpf
 ```
 
 ## Autor 👋

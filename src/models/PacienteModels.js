@@ -2,7 +2,7 @@ const moment = require('moment')
 class Paciente{
     //Fazendo a devida validação
     constructor(nome,email,idade,cpf){
-        if(nome.length > 4){
+        if(nome.length >= 4){
             this.nome = nome
         }else{
             throw new Error(`Nome inválido!`)
