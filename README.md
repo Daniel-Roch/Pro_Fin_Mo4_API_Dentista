@@ -89,6 +89,13 @@ Consegue alterar todos os dados passados de uma vez, menos o CPF, através da pe
   PUT localhost:3050/paciente/cpf
 ```
 
+# Screenshots - Insomnia
+
+![App Screenshot](/img-Insomnia/Inso-1.PNG)
+![App Screenshot](/img-Insomnia/Inso-2.PNG)
+![App Screenshot](/img-Insomnia/Inso-3.PNG)
+![App Screenshot](/img-Insomnia/Inso-4.PNG)
+
 ## Autor 👋
 
 - [@Daniel-Roch](https://github.com/Daniel-Roch)
