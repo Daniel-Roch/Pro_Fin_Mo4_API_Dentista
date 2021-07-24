@@ -96,6 +96,24 @@ Consegue alterar todos os dados passados de uma vez, menos o CPF, através da pe
 ![App Screenshot](/img-Insomnia/Inso-3.PNG)
 ![App Screenshot](/img-Insomnia/Inso-4.PNG)
 
+# Rodando Testes (test)
+
+Foram aplicado testes nesta api, testes nas rotas:
+
+`GET`
+
+`POST`
+
+`PATCH`
+
+`DELETE`
+
+```bash 
+  npm run test
+```
+
+Obs: Também foi feito um teste na criação de Paciente, na models.
+
 ## Autor 👋
 
 - [@Daniel-Roch](https://github.com/Daniel-Roch)
