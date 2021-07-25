@@ -59,6 +59,8 @@ class PacienteDao{
     //Vou aproveitar e validar aqui o nome que estará entrando para substituir.
     setPatchPaciente(cpf,body){
         return new Promise((resolve, reject)=>{
+            //expressao Regular para validar cpf
+            const regexCpf = /\d{3}\.\d{3}\.\d{3}\-\d{2}/g
             //Recebendo nome, e validando.
             if(body.nome && body.nome.length >= 4){
                 this.db.run(`UPDATE paciente SET nome = ? where cpf = ?`,[body.nome,cpf],(err)=>{
@@ -84,7 +86,7 @@ class PacienteDao{
                         resolve({"Dado alterado" : "idade"})
                     }
                 })
-            }else if(body.cpf && typeof body.cpf.length == 14){
+            }else if(body.cpf && body.cpf.match(regexCpf) != null){
                 //Avaliar se deve ou não mudar o cpf, sendo ele único para não haver problema
                 this.db.run(`UPDATE paciente SET cpf = ? where cpf = ?`,[body.cpf,cpf],(err)=>{
                     if(err){

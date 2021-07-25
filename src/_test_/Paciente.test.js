@@ -1,5 +1,8 @@
 const Paciente = require('../models/PacienteModels')
 
+//comando para ignorar o api.test.js e somente executar o que você gostaria: 
+//npm run test -t Paciente.test.js
+
 //Aplicando testes na criação de Paciente
 describe('Test Create Paciente',()=>{
     it('Create Paciente',()=>{

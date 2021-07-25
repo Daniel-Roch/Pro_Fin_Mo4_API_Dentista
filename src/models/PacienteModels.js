@@ -20,8 +20,14 @@ class Paciente{
             throw new Error(`Idade inválida`)
         }
         //cpf
-        if(cpf.length == 14){
+        //utilizei uma REGEXP para validar cpf.
+        const regexCpf = /\d{3}\.\d{3}\.\d{3}\-\d{2}/g
+        if(cpf.match(regexCpf) != null){
             this.cpf = cpf
+            //Implementar no telefone e agora no cpf.
+            /* const num = '(00)00000-0000'
+            const re = /\(\d\d\)\s?\d{5}\-?\d{4}/g
+            console.log(num.match(re)) */
         }else{
             throw new Error(`Cpf inválido`)
         }
