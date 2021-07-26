@@ -8,7 +8,9 @@ class Paciente{
             throw new Error(`Nome inválido!`)
         }
         //email
-        if(email.indexOf('@') > 0){
+        //utilizei uma REGEXP para validar email.
+        const regEmail = /\w@.+[\.com\.com.br]$/g
+        if(email.match(regEmail) != null){
             this.email = email
         }else{
             throw new Error(`Email inválido`)
@@ -32,7 +34,7 @@ class Paciente{
             throw new Error(`Cpf inválido`)
         }
         //data_cadatro - usei o moment para modificar a data.
-        this.data_cadastro = moment(new Date()).format('DD/MM/YYYY')
+        this.data_cadastro = moment().format('DD/MM/YYYY')
     }
 }
 //Exportando
