@@ -9,7 +9,7 @@ class Paciente{
         }
         //email
         //utilizei uma REGEXP para validar email.
-        const regEmail = /\w@.+[\.com\.com.br]$/g
+        const regEmail = /\w\@.+(.com|.com.br)$/g
         if(email.match(regEmail) != null){
             this.email = email
         }else{

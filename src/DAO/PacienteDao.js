@@ -61,7 +61,7 @@ class PacienteDao{
         return new Promise((resolve, reject)=>{
             //expressao Regular para validar cpf
             const regexCpf = /\d{3}\.\d{3}\.\d{3}\-\d{2}/g
-            const regEmail = /\w@.+[\.com\.com.br]$/g
+            const regEmail = /\w\@.+(.com|.com.br)$/g
             //Recebendo nome, e validando.
             if(body.nome && body.nome.length >= 4){
                 this.db.run(`UPDATE paciente SET nome = ? where cpf = ?`,[body.nome,cpf],(err)=>{
@@ -103,7 +103,7 @@ class PacienteDao{
     }
     //Fazer um PUT - alterar Todo o campo. - Menos cpf
     setPutPaciente(cpf,body){
-        const regEmail = /\w@.+[\.com\.com.br]$/g
+        const regEmail = /\w\@.+(.com|.com.br)$/g
 
         return new Promise((resolve,reject)=>{
             //Saber se está correto o que foi passado - Porém não pode alterar o cpf.
