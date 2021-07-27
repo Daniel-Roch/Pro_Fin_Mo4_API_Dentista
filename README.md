@@ -72,9 +72,13 @@ Retorna somente um, associando que exista somente uma pessoa com aquele cpf.
 ## POST - enviar dados.
 
 `Dados json esperados:` "nome" , "email", "idade" e "cpf".
+
 `nome`: Maior ou igual 4 letras.
+
 `email`:  Obrigatório ter `@` e `.com` (ou `.com.br`)
+
 `idade`: Precisa ser int(number)
+
 `cpf`: precisar ter os `2 ponto` e um `-`, além das sequencia de números, ex: 000.000.000-00
 
 ```http
@@ -104,6 +108,8 @@ Consegue alterar todos os dados passados de uma vez, menos o CPF, através da pe
 ```http
   PUT localhost:3050/paciente/cpf
 ```
+
+`OBS: Os seguintes comandos PUT e PATCH seguem os requisitos do POST para poder enviar os devidos dados`
 
 # Screenshots - Insomnia
 
