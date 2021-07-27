@@ -35,7 +35,7 @@ Comenados que utilizei na parte do terminal:
   npm install sqlite3
 ```
 
-# Bibliotecas utilizadas no dev - forma de utilizar:
+# Bibliotecas utilizadas no dev - forma de utilizar
 
 Comenados que utilizei na parte do terminal:
 
@@ -45,13 +45,23 @@ Comenados que utilizei na parte do terminal:
   npm i supertest -D
 ```
 
+# Servidor
+
+Comandos para rodar servidor e testes:
+
+```bash
+  npm run dev - Iniciar nodemon em modo desenvolvedor.
+  npm start
+  npm run test - Iniciar teste.
+```
+
 ## GET - All.
 
 ```http
   GET localhost:3050/paciente
 ```
 
-## GET - Para achar pelo cpf.
+## GET - Para achar pelo `cpf`.
 
 Retorna somente um, associando que exista somente uma pessoa com aquele cpf.
 
@@ -61,11 +71,17 @@ Retorna somente um, associando que exista somente uma pessoa com aquele cpf.
 
 ## POST - enviar dados.
 
+`Dados json esperados:` "nome" , "email", "idade" e "cpf".
+`nome`: Maior ou igual 4 letras.
+`email`:  Obrigatório ter `@` e `.com` (ou `.com.br`)
+`idade`: Precisa ser int(number)
+`cpf`: precisar ter os `2 ponto` e um `-`, além das sequencia de números, ex: 000.000.000-00
+
 ```http
   POST localhost:3050/paciente
 ```
 
-## DELETE - Deletar dados pelo CPF.
+## DELETE - Deletar dados pelo `cpf`.
 
 Deleta todos os CPF's que existem, tendo em vista que exista somente 1 pessoa com aquele CPF.
 
@@ -81,7 +97,7 @@ Ele altera 1 dado por vez, através do cpf que procura. também pode alterar o c
   PATCH localhost:3050/paciente/cpf
 ```
 
-## PUT - Modificar todos os dados (Menos cpf).
+## PUT - Modificar todos os dados `(Menos cpf)`.
 
 Consegue alterar todos os dados passados de uma vez, menos o CPF, através da pesquisa do CPF.
 
