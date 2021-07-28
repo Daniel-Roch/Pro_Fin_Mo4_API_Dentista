@@ -19,7 +19,7 @@ describe('Testando rotas de Paciente',()=>{
                 nome: "Fulano",
                 email: "blabla@hotmail.com",
                 idade: 30,
-                cpf: "111.111.111-01"
+                cpf: "111.111.111-02"
             })
             expect(res.statusCode).toEqual(201)
             expect(res.body).toMatchObject({'Envio de dados': true})
@@ -27,7 +27,7 @@ describe('Testando rotas de Paciente',()=>{
     //Rota PATCH - Alterar parcialmente
     it('Fazendo um PATCH - alteração parcial!', async ()=>{
         const res = await request(app)
-        .patch('/paciente/111.111.111-01')
+        .patch('/paciente/111.111.111-02')
         .send({
             nome: "Ciclano"
         })
