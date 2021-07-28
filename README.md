@@ -136,9 +136,7 @@ Foram aplicado testes nesta api, testes nas rotas:
 Obs: Também foi feito um teste na criação de Paciente, na models.
 
 # Heroku
-Enviei o banco de dados para o heroku.
-
-`https://projeto-dentista-api-m4.herokuapp.com/paciente`
+Enviei o banco de dados para o heroku. [link](https://projeto-dentista-api-m4.herokuapp.com/paciente)
 
 ![logo](https://raw.githubusercontent.com/ivangabriele/vscode-heroku/master/res/icon.png)
 
