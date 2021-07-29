@@ -23,6 +23,13 @@ Esta `API REST` é referente a um `consultorio Dentista`, e seria parte de cadas
 - JEST (testes)
 - SUPERTEST (testes servidor)
 
+# Criando o database.db
+Para criar o banco de dados você pode utilizar o comando:
+
+```bash
+  node ./src/infra/createDB.js
+```
+
 # Forma de utilizar:
 
 Comenados que utilizei na parte do terminal:
