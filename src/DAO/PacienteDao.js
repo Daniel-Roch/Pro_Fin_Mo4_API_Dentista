@@ -22,7 +22,11 @@ class PacienteDao{
                 if(erro){
                     reject(erro)
                 }else{
-                    resolve(row)
+                    if(row){
+                        resolve(row)
+                    }else{
+                        reject({"CPF" : false})
+                    }
                 }
             })
         })
