@@ -42,20 +42,20 @@ module.exports = (app,db) =>{
         /* Paciente.adiciona(db, req.body, res) */
     })
     //deletar pelo cpf
-    app.delete('/paciente/:cpf',async (req,res)=>{
+    app.delete('/paciente/:cpf',cors(),async (req,res)=>{
         await pacienteDao.setDeletePaciente(req.params.cpf)
             .then(resp =>res.status(200).json(resp))
             .catch(erro => res.status(500).json(erro))
     })
     //app.patch - parcial - por CPF - pode alterar o cpf.
-    app.patch('/paciente/:cpf',async (req,res)=>{
+    app.patch('/paciente/:cpf',cors(),async (req,res)=>{
         await pacienteDao.setPatchPaciente(req.params.cpf, req.body)
             .then(sucess => res.status(200).json(sucess))
             .catch(erro => erro == 'Envio inválido.' ? res.status(400).json(erro) : res.status(500).json(erro))
 
     })
     //app.put - completo - não pode alterar o cpf.
-    app.put('/paciente/:cpf',async (req,res)=>{
+    app.put('/paciente/:cpf',cors(),async (req,res)=>{
         await pacienteDao.setPutPaciente(req.params.cpf, req.body)
             .then(sucess => res.status(200).json(sucess))
             .catch(erro => erro == `Dados inválidos` ? res.status(400).json(erro) : res.status(500).json(erro))
