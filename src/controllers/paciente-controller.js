@@ -2,12 +2,14 @@
 const Paciente = require('../models/PacienteModels')
 //Fazendo requisição para PacienteDAO
 const PacienteDao = require('../DAO/PacienteDao')
+//Colocando Cors
+const cors = require('cors')
 
 //Exportando a rota - e recebendo o parametro app.
 module.exports = (app,db) =>{
     const pacienteDao = new PacienteDao(db)
     //Mostra todo o banco de dados.
-    app.get('/paciente',async (req,res)=>{  
+    app.get('/paciente',cors(),async (req,res)=>{  
         //fazendo a devida requisição ao DAO - e colocando "await" para aguardar a reposta.
         await pacienteDao.getAllPaciente()
             .then(rows => res.status(200).json(rows))
@@ -21,7 +23,7 @@ module.exports = (app,db) =>{
             .catch(erro => res.status(500).json({erro}))
     })
     //Enviar dados.
-    app.post('/paciente',async (req,res)=>{
+    app.post('/paciente',cors(),async (req,res)=>{
         //Pegando o corpo da requisição
         const {nome,email,idade,cpf} = req.body
         //recebendo a validação do models e já tratando caso tenha dado algum erro.
@@ -57,5 +59,12 @@ module.exports = (app,db) =>{
         await pacienteDao.setPutPaciente(req.params.cpf, req.body)
             .then(sucess => res.status(200).json(sucess))
             .catch(erro => erro == `Dados inválidos` ? res.status(400).json(erro) : res.status(500).json(erro))
+    })
+    //app.get - Para a parte de login.
+    app.get('/paciente/login/:dados',cors(),async (req,res)=>{
+        //fazendo a devida requisição ao DAO - e colocando "await" para aguardar a reposta.
+        await pacienteDao.getLoginPaciente(req.params.dados)
+            .then(row =>res.status(200).json(row))
+            .catch(erro => res.status(500).json({erro}))
     })
 }

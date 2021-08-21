@@ -128,5 +128,26 @@ class PacienteDao{
             }
         })
     }
+    //Fazer login
+    getLoginPaciente(dados){
+        //Pegando os dados e colocando separadamente dentro de uma array. (irão vir assim: (nome: email:))
+        const dadosPaciente = dados.split(" ").map(a => a.substring(a.indexOf(":") + 1))
+
+        //[Email@algo.com.br, 111.111.111-01]
+        return new Promise((resolve,reject)=>{
+            //fazendo um get no banco de dados para pegar somente 1 resultado com aquele CPF
+            this.db.get(`SELECT * FROM Paciente WHERE EMAIL = ? AND CPF = ?`, dadosPaciente, (erro,row)=>{
+                if(erro){
+                    reject(erro)
+                }else{
+                    if(row){
+                        resolve(row)
+                    }else{
+                        reject({"Dados" : false})
+                    }
+                }
+            })
+        })
+    }
 }
 module.exports = PacienteDao
