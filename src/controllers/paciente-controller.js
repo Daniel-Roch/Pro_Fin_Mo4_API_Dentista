@@ -16,7 +16,7 @@ module.exports = (app,db) =>{
             .catch(err => res.status(500).json({err}))
     })
     //Mostrar somente um - pelo CPF
-    app.get('/paciente/:cpf',async (req,res)=>{
+    app.get('/paciente/:cpf',cors(),async (req,res)=>{
         //fazendo a devida requisição ao DAO - e colocando "await" para aguardar a reposta.
         await pacienteDao.getPaciente(req.params.cpf)
             .then(row =>res.status(200).json(row))
@@ -25,11 +25,11 @@ module.exports = (app,db) =>{
     //Enviar dados.
     app.post('/paciente',cors(),async (req,res)=>{
         //Pegando o corpo da requisição
-        const {nome,email,idade,cpf} = req.body
+        const {nome,email,data_nascimento,cpf,endereco,cidade,telefone} = req.body
         //recebendo a validação do models e já tratando caso tenha dado algum erro.
         try{
             //criando a nova class Paciente.
-            const newPaciente = new Paciente(nome,email,idade,cpf)
+            const newPaciente = new Paciente(nome,email,data_nascimento,cpf,endereco,cidade,telefone)
             //Se estiver tudo certo ele passa para DAO
             await pacienteDao.setPaciente(newPaciente)
                 .then(sucess=> res.status(201).json(sucess))

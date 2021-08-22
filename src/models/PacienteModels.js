@@ -1,7 +1,7 @@
 const moment = require('moment')
 class Paciente{
     //Fazendo a devida validação
-    constructor(nome,email,idade,cpf){
+    constructor(nome,email,data_nascimento,cpf,endereco,cidade,telefone){
         if(nome.length >= 4){
             this.nome = nome
         }else{
@@ -15,12 +15,8 @@ class Paciente{
         }else{
             throw new Error(`Email inválido`)
         }
-        //idade
-        if(typeof idade == 'number' && idade > 0 && idade < 130){
-            this.idade = idade
-        }else{
-            throw new Error(`Idade inválida`)
-        }
+        //data_nascimento
+        this.data_nascimento = data_nascimento
         //cpf
         //utilizei uma REGEXP para validar cpf.
         const regexCpf = /\d{3}\.\d{3}\.\d{3}\-\d{2}/g
@@ -33,6 +29,12 @@ class Paciente{
         }else{
             throw new Error(`Cpf inválido`)
         }
+        //endereco
+        this.endereco = endereco
+        //cidade
+        this.cidade = cidade
+        //telefone
+        this.telefone = telefone
         //data_cadatro - usei o moment para modificar a data.
         this.data_cadastro = moment().format('DD/MM/YYYY')
     }

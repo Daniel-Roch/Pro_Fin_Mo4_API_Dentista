@@ -9,8 +9,11 @@ CREATE TABLE if not exists "Paciente" (
     "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
     "NOME" varchar(50) not null,
     "EMAIL" varchar(100),
-    "IDADE" tinyint not null,
+    "Data_Nascimento" DATE not null,
     "CPF" VARCHAR(20) not null,
+    "ENDERECO" varchar(255) not null,
+    "CIDADE" varchar(100) not null,
+    "TELEFONE" varchar(100) not null,
     "DATA_CADASTRO" DATE
 );`;
 

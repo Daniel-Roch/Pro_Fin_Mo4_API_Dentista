@@ -35,9 +35,10 @@ class PacienteDao{
     setPaciente(newPaciente){
         //Parte da promise para aguardar a reposta, e enviar caso sucess ou erro
         return new Promise((resolve,reject)=>{
-            this.db.run(`INSERT INTO Paciente(nome,email,idade,cpf,DATA_CADASTRO)
-            VALUES(?,?,?,?,?)`,
-            [newPaciente.nome, newPaciente.email, newPaciente.idade, newPaciente.cpf, newPaciente.data_cadastro],
+            this.db.run(`INSERT INTO Paciente(nome,email,data_nascimento,cpf,endereco,cidade,telefone,DATA_CADASTRO)
+            VALUES(?,?,?,?,?,?,?,?)`,
+            [newPaciente.nome, newPaciente.email, newPaciente.data_nascimento,
+                 newPaciente.cpf,newPaciente.endereco,newPaciente.cidade,newPaciente.telefone,newPaciente.data_cadastro],
             (err)=>{
                 if(err){
                     reject(err)
